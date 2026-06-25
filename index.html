@@ -466,5 +466,64 @@ updateClock();setInterval(updateClock,1000);
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
 document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
 </script>
+<div id="nxModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9000;align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this){closeNxModal();}">
+  <div style="background:#0C0C0C;border:1px solid rgba(232,228,220,0.09);width:100%;max-width:500px;padding:52px 48px 44px;position:relative;">
+    <button onclick="closeNxModal()" style="position:absolute;top:20px;right:22px;background:none;border:none;color:#7A7870;font-size:18px;cursor:none;font-family:'DM Sans',sans-serif;transition:color 0.3s;" onmouseenter="this.style.color='#E8E4DC'" onmouseleave="this.style.color='#7A7870'">✕</button>
+
+    <div id="nxForm">
+      <div class="hero-eyebrow" style="margin-bottom:18px;">Free demo — no commitment</div>
+      <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#E8E4DC;line-height:0.95;letter-spacing:-1.5px;margin-bottom:36px;">Let's get<br/>your business<br/><em style="font-style:italic;color:#178CF2;">growing.</em></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="margin-bottom:18px;">
+          <label style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:#7A7870;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Full name</label>
+          <input id="nx-name" type="text" placeholder="Jane Smith" style="width:100%;background:rgba(232,228,220,0.03);border:1px solid rgba(232,228,220,0.09);color:#E8E4DC;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;padding:11px 14px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#178CF2'" onblur="this.style.borderColor='rgba(232,228,220,0.09)'"/>
+        </div>
+        <div style="margin-bottom:18px;">
+          <label style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:#7A7870;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Phone</label>
+          <input id="nx-phone" type="tel" placeholder="+64 21 000 000" style="width:100%;background:rgba(232,228,220,0.03);border:1px solid rgba(232,228,220,0.09);color:#E8E4DC;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;padding:11px 14px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#178CF2'" onblur="this.style.borderColor='rgba(232,228,220,0.09)'"/>
+        </div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <label style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:#7A7870;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Email address</label>
+        <input id="nx-email" type="email" placeholder="jane@yourbusiness.co.nz" style="width:100%;background:rgba(232,228,220,0.03);border:1px solid rgba(232,228,220,0.09);color:#E8E4DC;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;padding:11px 14px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#178CF2'" onblur="this.style.borderColor='rgba(232,228,220,0.09)'"/>
+      </div>
+
+      <div style="height:1px;background:rgba(232,228,220,0.07);margin:4px 0 20px;"></div>
+
+      <div style="margin-bottom:18px;">
+        <label style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:#7A7870;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">Notes <span style="color:rgba(122,120,112,0.45);letter-spacing:0;text-transform:none;">— optional</span></label>
+        <textarea id="nx-notes" placeholder="Tell us a bit about your business and what you're looking for…" style="width:100%;background:rgba(232,228,220,0.03);border:1px solid rgba(232,228,220,0.09);color:#E8E4DC;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;padding:11px 14px;outline:none;box-sizing:border-box;resize:vertical;min-height:90px;" onfocus="this.style.borderColor='#178CF2'" onblur="this.style.borderColor='rgba(232,228,220,0.09)'"></textarea>
+      </div>
+
+      <button onclick="submitNxModal()" style="width:100%;background:#178CF2;color:#fff;border:none;padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;letter-spacing:0.05em;cursor:none;transition:opacity 0.25s;" onmouseenter="this.style.opacity='0.85'" onmouseleave="this.style.opacity='1'">Book my free demo &nbsp;→</button>
+      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:#7A7870;text-align:center;margin-top:14px;font-weight:300;">No credit card · No tech knowledge needed · NZ-based team</p>
+    </div>
+
+    <div id="nxSuccess" style="display:none;text-align:center;padding:24px 0 8px;">
+      <div style="width:52px;height:52px;border:1px solid rgba(23,140,242,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:#178CF2;font-size:20px;">✓</div>
+      <div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:#E8E4DC;margin-bottom:10px;">We'll be in <em style="font-style:italic;color:#178CF2;">touch.</em></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:#7A7870;line-height:1.7;font-weight:300;">Thanks — someone from the Nexly team<br/>will reach out within one business day.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function closeNxModal(){
+  document.getElementById('nxModal').style.display='none';
+  document.getElementById('nxForm').style.display='block';
+  document.getElementById('nxSuccess').style.display='none';
+  ['nx-name','nx-email','nx-phone','nx-notes'].forEach(function(id){document.getElementById(id).value='';});
+}
+function submitNxModal(){
+  var n=document.getElementById('nx-name').value.trim();
+  var e=document.getElementById('nx-email').value.trim();
+  var p=document.getElementById('nx-phone').value.trim();
+  if(!n||!e||!p){alert('Please fill in your name, email, and phone number.');return;}
+  document.getElementById('nxForm').style.display='none';
+  document.getElementById('nxSuccess').style.display='block';
+}
+</script>
 </body>
 </html>
