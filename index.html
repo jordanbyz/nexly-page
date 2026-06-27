@@ -240,7 +240,11 @@ footer{border-top:1px solid var(--border);padding:64px 48px 40px;display:grid;gr
   .clients-section{padding:72px 20px;}
   .client-row{grid-template-columns:40px 1fr auto;gap:16px;}.client-tag{display:none;}
   .why-section{grid-template-columns:1fr;gap:0;padding:72px 20px;}
-  .pricing-section{padding:72px 20px;}.pricing-grid{grid-template-columns:1fr;}
+  .pricing-section{padding:72px 20px;}.pricing-grid{grid-template-columns:1fr!important;}
+  .pricing-grid > *{grid-column:1!important;}
+  .pricing-card > div[style*="grid-template-columns:1fr 1fr"]{display:block!important;}
+  .pricing-card > div[style*="grid-template-columns:1fr auto"]{grid-template-columns:1fr!important;gap:24px!important;}
+  .pricing-card > div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important;}
   .cta-section{padding:80px 20px;}
   footer{grid-template-columns:1fr 1fr;padding:40px 20px 24px;}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center;padding:16px 20px;}
@@ -352,8 +356,9 @@ footer{border-top:1px solid var(--border);padding:64px 48px 40px;display:grid;gr
       <div class="service-num">02</div>
       <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
       <div class="service-name">Website Design &amp; Development</div>
-      <div class="service-desc">Mobile-first, conversion-focused websites that load fast and look sharp. Built to rank on Google and turn visitors into customers.</div>
-      <div class="service-tags"><span class="service-tag">Mobile-first</span><span class="service-tag">SEO optimised</span><span class="service-tag">CMS included</span><span class="service-tag">Fast delivery</span></div>
+      <div class="service-desc">Mobile-friendly, conversion-focused websites that load fast and look sharp. Built to rank on Google and turn visitors into customers. Small businesses with websites earn 39% more revenue than those without one. And 81% of consumers research a business online before making a purchase.</div>
+
+      <div class="service-tags"><span class="service-tag">Mobile-friendly</span><span class="service-tag">SEO optimised</span><span class="service-tag">CMS included</span><span class="service-tag">Fast delivery</span></div>
       <div class="service-arrow">↗</div>
     </div>
     <div class="service-card">
@@ -412,14 +417,15 @@ footer{border-top:1px solid var(--border);padding:64px 48px 40px;display:grid;gr
     <div class="section-eyebrow">Simple pricing</div>
     <h2 class="section-title">Transparent, flat-rate<br/><em>pricing.</em></h2>
   </div>
-  <div class="pricing-grid reveal">
+  <div class="pricing-grid reveal" style="grid-template-columns:repeat(2,1fr);">
 
+    <!-- AI ASSISTANT -->
     <div class="pricing-card featured">
       <div class="pricing-badge">✓ Available now</div>
       <div class="pricing-name">AI Assistant Plan</div>
-      <div class="pricing-desc">Everything you need to capture leads, answer customers, and grow your business — 24/7, fully managed by us.</div>
+      <div class="pricing-desc">An intelligent AI chatbot trained on your business — capturing leads, answering questions, and booking appointments around the clock.</div>
       <div class="pricing-price"><span class="pricing-currency">NZ$</span><span class="pricing-amount">50</span></div>
-      <div class="pricing-period">per month · cancel anytime</div>
+      <div class="pricing-period">per month · no setup fee · cancel anytime</div>
       <div class="pricing-divider"></div>
       <div class="pricing-features">
         <div class="pricing-feature"><div class="feature-check">✓</div>Custom AI chatbot trained on your business</div>
@@ -428,29 +434,84 @@ footer{border-top:1px solid var(--border);padding:64px 48px 40px;display:grid;gr
         <div class="pricing-feature"><div class="feature-check">✓</div>Ongoing updates &amp; maintenance included</div>
         <div class="pricing-feature"><div class="feature-check">✓</div>Monthly performance check-ins</div>
         <div class="pricing-feature"><div class="feature-check">✓</div>NZ-based support team</div>
-        <div class="pricing-feature"><div class="feature-check">✓</div>No setup fees · No lock-in contracts</div>
       </div>
       <button class="pricing-cta" onclick="openModal()">Get started — book a free demo</button>
     </div>
 
-    <div class="pricing-card">
+    <!-- WEBSITE PLAN -->
+    <div class="pricing-card featured">
+      <div class="pricing-badge">✓ Available now</div>
+      <div class="pricing-name">Website Plan</div>
+      <div class="pricing-desc">A professional, mobile-friendly website built for your business to turn visitors into customers — no upfront cost, just a simple monthly fee that covers everything.</div>
+      <div class="pricing-price"><span class="pricing-currency">NZ$</span><span class="pricing-amount">150</span></div>
+      <div class="pricing-period">per month · no upfront cost · cancel anytime</div>
+      <div class="pricing-divider"></div>
+      <div class="pricing-features">
+        <div class="pricing-feature"><div class="feature-check">✓</div>Custom website designed for your brand</div>
+        <div class="pricing-feature"><div class="feature-check">✓</div>Mobile-first &amp; SEO optimised</div>
+        <div class="pricing-feature"><div class="feature-check">✓</div>Hosting &amp; domain management included</div>
+        <div class="pricing-feature"><div class="feature-check">✓</div>Ongoing updates &amp; maintenance</div>
+        <div class="pricing-feature"><div class="feature-check">✓</div>Conversion-focused design to generate leads</div>
+        <div class="pricing-feature"><div class="feature-check">✓</div>No large upfront costs — ever</div>
+      </div>
+      <button class="pricing-cta" onclick="openModal()">Get started — book a free demo</button>
+    </div>
+
+    <!-- BUNDLE -->
+    <div class="pricing-card" style="border-color:rgba(23,140,242,0.5);background:linear-gradient(135deg,var(--surface) 0%,rgba(23,140,242,0.09) 100%);grid-column:1 / -1;">
+      <div style="position:absolute;top:28px;right:28px;font-size:10px;color:var(--blue);border:1px solid rgba(23,140,242,0.35);border-radius:100px;padding:3px 12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Best value</div>
+      <div class="pricing-badge">✓ Available now</div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;">
+        <div>
+          <div class="pricing-name">Website + AI Assistant Bundle</div>
+          <div class="pricing-desc" style="max-width:560px;">Get your professional website and an AI chatbot working together — the complete digital package to capture every lead and grow your business, at a price that makes sense.</div>
+          <div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:24px;">
+            <div>
+              <div class="pricing-features" style="margin-bottom:0;">
+                <div class="pricing-feature"><div class="feature-check">✓</div>Everything in the AI Assistant Plan</div>
+                <div class="pricing-feature"><div class="feature-check">✓</div>Everything in the Website Plan</div>
+                <div class="pricing-feature"><div class="feature-check">✓</div>AI chatbot embedded directly in your website</div>
+                <div class="pricing-feature"><div class="feature-check">✓</div>Unified monthly reporting for both services</div>
+                <div class="pricing-feature"><div class="feature-check">✓</div>Priority support &amp; faster response times</div>
+                <div class="pricing-feature"><div class="feature-check">✓</div>No upfront costs · No lock-in contracts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;min-width:200px;">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;text-decoration:line-through;">NZ$200/mo separately</div>
+          <div class="pricing-price" style="justify-content:flex-end;"><span class="pricing-currency">NZ$</span><span class="pricing-amount" style="font-size:72px;">175</span></div>
+          <div class="pricing-period" style="text-align:right;">per month · save NZ$25/mo</div>
+          <button class="pricing-cta" style="margin-top:24px;min-width:200px;" onclick="openModal()">Get the bundle deal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="pricing-card" style="grid-column:1 / -1;">
       <div class="coming-soon-tag">Coming soon</div>
       <div class="pricing-badge" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);color:var(--muted2);">More packages</div>
-      <div class="pricing-name" style="color:var(--muted);">Growth &amp; Pro Plans</div>
-      <div class="pricing-desc">We're building out additional packages for businesses that want more — more channels, more automation, more reach.</div>
-      <div class="pricing-price"><span class="pricing-currency" style="color:var(--muted2);">NZ$</span><span class="pricing-amount" style="color:var(--muted);">???</span></div>
-      <div class="pricing-period" style="color:var(--muted2);">pricing to be announced</div>
-      <div class="pricing-divider"></div>
-      <div class="pricing-coming-features">
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>WhatsApp &amp; SMS bot integration</div>
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>Full website design &amp; development</div>
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>AI content creation &amp; SEO</div>
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>Review management &amp; protection</div>
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>Multi-location business support</div>
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>Advanced analytics &amp; reporting</div>
-        <div class="pricing-coming-feature"><div class="feature-dot"></div>Priority support &amp; dedicated account manager</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start;">
+        <div>
+          <div class="pricing-name" style="color:var(--muted);font-size:22px;">Growth &amp; Pro Plans</div>
+          <div class="pricing-desc">We're building out more packages for businesses that want more — more channels, more automation, more reach.</div>
+        </div>
+        <div class="pricing-coming-features" style="margin-bottom:0;">
+          <div class="pricing-coming-feature"><div class="feature-dot"></div>WhatsApp &amp; SMS bot integration</div>
+          <div class="pricing-coming-feature"><div class="feature-dot"></div>AI content creation &amp; SEO</div>
+          <div class="pricing-coming-feature"><div class="feature-dot"></div>Review management &amp; protection</div>
+          <div class="pricing-coming-feature"><div class="feature-dot"></div>Multi-location business support</div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;height:100%;gap:20px;">
+          <div class="pricing-coming-features" style="margin-bottom:0;">
+            <div class="pricing-coming-feature"><div class="feature-dot"></div>Advanced analytics &amp; reporting</div>
+            <div class="pricing-coming-feature"><div class="feature-dot"></div>Priority support &amp; dedicated account manager</div>
+            <div class="pricing-coming-feature"><div class="feature-dot"></div>E-commerce &amp; online booking systems</div>
+            <div class="pricing-coming-feature"><div class="feature-dot"></div>Custom integrations &amp; API connections</div>
+          </div>
+          <button class="pricing-cta outline" onclick="openModal()">Register your interest</button>
+        </div>
       </div>
-      <button class="pricing-cta outline" onclick="openModal()">Register your interest</button>
     </div>
 
   </div>
